@@ -1,12 +1,13 @@
 <head>
-	<title>autoautoformtest</title>
+	<title>Autoform builder</title>
 </head>
 
 <body>
 	<div class="container">
-		<h1>Welcome to Meteor!</h1>
+		<h1>Autoform Builder demo</h1>
+		<h2>Create new form: </h2>
 		{{>quickForm collection="Forms" type="insert" id="forms_insert"}}
-
+		<h2>All forms:</h2>
 		{{> forms}}
 	</div>
 </body>
@@ -15,15 +16,19 @@
 	{{#each forms}}
 
 	{{>forms_aForm}}
+	<hr style="clear: both" />
 
 	{{/each}}
 </template>
 
 <template name="forms_aForm">
 	<div class="col-xs-6">
+		<h3>Resulting form</h3>
 		{{>quickForm schema=schema id=_id}}
 	</div>
 	<div class="col-xs-6">
+		<h3>Form Builder</h3>
 		{{>quickForm doc=this collection="Forms" type="update" autosave=true autosaveOnKeyup=true id=updateFormId}}
 	</div>
+	
 </template>
