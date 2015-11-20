@@ -1,0 +1,29 @@
+<head>
+	<title>autoautoformtest</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Welcome to Meteor!</h1>
+		{{>quickForm collection="Forms" type="insert" id="forms_insert"}}
+
+		{{> forms}}
+	</div>
+</body>
+
+<template name="forms">
+	{{#each forms}}
+
+	{{>forms_aForm}}
+
+	{{/each}}
+</template>
+
+<template name="forms_aForm">
+	<div class="col-xs-6">
+		{{>quickForm schema=schema id=_id}}
+	</div>
+	<div class="col-xs-6">
+		{{>quickForm doc=this collection="Forms" type="update" autosave=true autosaveOnKeyup=true id=updateFormId}}
+	</div>
+</template>
